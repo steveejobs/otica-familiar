@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Image from "next/image";
 import { Instagram, Navigation, Sparkles } from "lucide-react";
@@ -15,14 +15,16 @@ export function LensHero() {
     <section className="olhar-hero" aria-labelledby="hero-title">
       <div className="site-shell olhar-hero-grid">
         <AnimatedReveal className="olhar-hero-copy">
-          <Image
-            src={site.logoFull}
-            width={803}
-            height={808}
-            alt="Ótica da Família"
-            priority
-            className="olhar-hero-logo"
-          />
+          <span className="olhar-hero-logo-frame">
+            <Image
+              src={site.logoFull}
+              width={803}
+              height={808}
+              alt="Ótica da Família"
+              priority
+              className="olhar-hero-logo"
+            />
+          </span>
           <p className="eyebrow">Ótica em Araguaína - TO</p>
           <h1 id="hero-title">
             Óculos, lentes e armações para ver o mundo com bons olhos.
@@ -75,3 +77,4 @@ export function LensHero() {
     </section>
   );
 }
+

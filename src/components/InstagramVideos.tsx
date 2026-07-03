@@ -9,6 +9,7 @@ type InstagramVideo = {
   poster: string;
   title: string;
   caption: string;
+  featured?: boolean;
 };
 
 type InstagramVideosProps = {
@@ -18,29 +19,7 @@ type InstagramVideosProps = {
 export function InstagramVideos({ videos }: InstagramVideosProps) {
   const sectionRef = useRef<HTMLElement | null>(null);
   const videoRefs = useRef<Array<HTMLVideoElement | null>>([]);
-  const [shouldLoad, setShouldLoad] = useState(false);
-
-  useEffect(() => {
-    const section = sectionRef.current;
-
-    if (!section) {
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setShouldLoad(true);
-          observer.disconnect();
-        }
-      },
-      { rootMargin: '180px 0px', threshold: 0.01 },
-    );
-
-    observer.observe(section);
-
-    return () => observer.disconnect();
-  }, []);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -74,14 +53,27 @@ export function InstagramVideos({ videos }: InstagramVideosProps) {
       observer.disconnect();
       document.removeEventListener('visibilitychange', pauseOnHidden);
     };
-  }, [shouldLoad]);
+  }, []);
 
-  function handlePlay(activeIndex: number) {
+  function handlePlay(activeVideoIndex: number) {
     videoRefs.current.forEach((video, index) => {
-      if (video && index !== activeIndex) {
+      if (video && index !== activeVideoIndex) {
         video.pause();
       }
     });
+    setActiveIndex(activeVideoIndex);
+  }
+
+  function handlePause(index: number) {
+    setActiveIndex((current) => (current === index ? null : current));
+  }
+
+  function playVideo(index: number) {
+    const video = videoRefs.current[index];
+
+    if (video) {
+      void video.play();
+    }
   }
 
   return (
@@ -92,22 +84,37 @@ export function InstagramVideos({ videos }: InstagramVideosProps) {
         <p>Veja detalhes da loja, das armações e do atendimento em Araguaína.</p>
       </div>
 
-      <div className={styles.rail}>
+      <div className={styles.editorialGrid}>
         {videos.map((video, index) => (
-          <article className={styles.card} key={video.src}>
-            <video
-              ref={(node) => {
-                videoRefs.current[index] = node;
-              }}
-              className={styles.video}
-              controls
-              muted
-              playsInline
-              preload={shouldLoad ? 'metadata' : 'none'}
-              poster={video.poster}
-              src={shouldLoad ? video.src : undefined}
-              onPlay={() => handlePlay(index)}
-            />
+          <article
+            className={`${styles.card} ${video.featured ? styles.featured : styles.side}`}
+            key={video.src}
+          >
+            <div className={styles.mediaWrap}>
+              <video
+                ref={(node) => {
+                  videoRefs.current[index] = node;
+                }}
+                className={styles.video}
+                controls
+                muted
+                playsInline
+                preload='metadata'
+                poster={video.poster}
+                src={video.src}
+                onPlay={() => handlePlay(index)}
+                onPause={() => handlePause(index)}
+                onEnded={() => handlePause(index)}
+              />
+              <button
+                type='button'
+                className={`${styles.playButton} ${activeIndex === index ? styles.playButtonHidden : ''}`}
+                onClick={() => playVideo(index)}
+                aria-label={`Reproduzir vídeo: ${video.title}`}
+              >
+                <span aria-hidden='true'>▶</span>
+              </button>
+            </div>
             <div className={styles.copy}>
               <h3>{video.title}</h3>
               <p>{video.caption}</p>
@@ -118,4 +125,3 @@ export function InstagramVideos({ videos }: InstagramVideosProps) {
     </section>
   );
 }
-

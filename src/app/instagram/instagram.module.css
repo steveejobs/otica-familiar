@@ -377,3 +377,173 @@
     transform: none;
   }
 }
+
+.galleryMarquee {
+  margin-top: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(132, 80, 14, 0.14);
+  border-radius: 26px;
+  background: rgba(255, 255, 255, 0.58);
+  box-shadow: 0 14px 38px rgba(24, 24, 24, 0.06);
+  padding: 12px 0;
+}
+
+.galleryRow {
+  overflow: hidden;
+  position: relative;
+}
+
+.galleryRow + .galleryRow {
+  margin-top: 8px;
+}
+
+.galleryRow::before,
+.galleryRow::after {
+  bottom: 0;
+  content: '';
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  width: 42px;
+  z-index: 2;
+}
+
+.galleryRow::before {
+  background: linear-gradient(90deg, rgba(255, 248, 239, 0.94), transparent);
+  left: 0;
+}
+
+.galleryRow::after {
+  background: linear-gradient(270deg, rgba(255, 248, 239, 0.94), transparent);
+  right: 0;
+}
+
+.galleryTrack,
+.gallerySet {
+  display: flex;
+  width: max-content;
+}
+
+.galleryTrack {
+  gap: 8px;
+  will-change: transform;
+}
+
+.galleryRow[data-direction='forward'] .galleryTrack {
+  animation: instagramBioGalleryMove 34s linear infinite;
+}
+
+.galleryRow[data-direction='reverse'] .galleryTrack {
+  animation: instagramBioGalleryMoveReverse 28s linear infinite;
+}
+
+.gallerySet {
+  gap: 8px;
+  padding-right: 8px;
+}
+
+.galleryCard {
+  background: var(--paper);
+  border: 1px solid rgba(24, 24, 24, 0.08);
+  border-radius: 18px;
+  flex: 0 0 186px;
+  height: 128px;
+  margin: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.galleryRow[data-direction='reverse'] .galleryCard {
+  flex-basis: 146px;
+  height: 104px;
+}
+
+.galleryCard img {
+  object-fit: cover;
+}
+
+.testimonialGrid {
+  gap: 8px;
+}
+
+.testimonialCard {
+  gap: 6px;
+  padding: 10px 11px;
+}
+
+.testimonialCard blockquote {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  font-size: 0.86rem;
+}
+
+.sectionPanel {
+  padding: 14px;
+}
+
+.sectionHeading {
+  margin-bottom: 10px;
+}
+
+@keyframes instagramBioGalleryMove {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(calc(-50% - 4px), 0, 0);
+  }
+}
+
+@keyframes instagramBioGalleryMoveReverse {
+  from {
+    transform: translate3d(calc(-50% - 4px), 0, 0);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@media (min-width: 640px) {
+  .galleryCard {
+    flex-basis: 220px;
+    height: 148px;
+  }
+
+  .galleryRow[data-direction='reverse'] .galleryCard {
+    flex-basis: 170px;
+    height: 116px;
+  }
+
+  .sectionPanel {
+    padding: 18px;
+  }
+}
+
+@media (max-width: 420px) {
+  .galleryMarquee {
+    border-radius: 22px;
+    padding-block: 10px;
+  }
+
+  .galleryCard {
+    flex-basis: 168px;
+    height: 116px;
+  }
+
+  .galleryRow[data-direction='reverse'] .galleryCard {
+    flex-basis: 132px;
+    height: 94px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .galleryRow[data-direction='forward'] .galleryTrack,
+  .galleryRow[data-direction='reverse'] .galleryTrack {
+    animation: none;
+    transform: none;
+  }
+}

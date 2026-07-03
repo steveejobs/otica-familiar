@@ -1,4 +1,4 @@
-import Image from "next/image";
+﻿import Image from "next/image";
 import { Instagram } from "lucide-react";
 import { AnimatedReveal } from "@/components/AnimatedReveal";
 import { ViewportVideo } from "@/components/ViewportVideo";
@@ -109,11 +109,10 @@ export function StorePhotosSection() {
         <AnimatedReveal className="section-heading compact olhar-gallery-intro">
           <p className="eyebrow">Vitrine oficial</p>
           <h2 id="store-photos-title">
-            Loja, atendimento e coleções para conhecer antes da visita.
+            Loja, atendimento e armações em uma vitrine mais objetiva.
           </h2>
           <p>
-            Veja o ambiente da Ótica da Família e alguns dos estilos que ajudam
-            você a chegar com referências para experimentar.
+            Veja o ambiente da Ótica da Família e uma seleção enxuta de modelos para chegar com boas referências.
           </p>
         </AnimatedReveal>
 
@@ -121,10 +120,9 @@ export function StorePhotosSection() {
           <AnimatedReveal className="official-gallery-block is-space">
             <div className="official-gallery-heading">
               <p className="eyebrow">Loja e atendimento</p>
-              <h3>Um espaço para escolher com calma.</h3>
+              <h3>Ambiente principal com apoios visuais.</h3>
               <p>
-                Ambiente, fachada e atendimento reunidos para você conhecer a
-                experiência antes de chegar.
+                Uma imagem principal guia a leitura; as imagens de apoio mostram fachada e atendimento sem deixar a seção frouxa.
               </p>
             </div>
             <EditorialGrid images={spaceImages} variant="space" />
@@ -136,10 +134,9 @@ export function StorePhotosSection() {
           >
             <div className="official-gallery-heading">
               <p className="eyebrow">Armações e detalhes</p>
-              <h3>Mais referências para encontrar seu estilo.</h3>
+              <h3>Modelos e detalhes para comparar melhor.</h3>
               <p>
-                Formatos, cores e acabamentos para comparar sem preencher a
-                vitrine com repetições.
+                Formatos, cores e acabamentos para comparar com variedade e sem excesso visual.
               </p>
             </div>
             <EditorialGrid images={collectionImages} variant="collections" />
@@ -193,3 +190,4 @@ export function StorePhotosSection() {
     </section>
   );
 }
+

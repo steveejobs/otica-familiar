@@ -1,14 +1,14 @@
-import Image from "next/image";
+﻿import Image from "next/image";
 import { Award, Glasses, HeartHandshake } from "lucide-react";
 import { AnimatedReveal } from "@/components/AnimatedReveal";
 import "@/app/media-phase-four-additions.css";
 
 const recognitionItems = [
-  { icon: Award, text: "Atendimento reconhecido" },
-  { icon: HeartHandshake, text: "Confiança de clientes locais" },
+  { icon: Award, text: "Reconhecimento em Araguaína" },
+  { icon: HeartHandshake, text: "5/5 no Google com 16 avaliações" },
   {
     icon: Glasses,
-    text: "Cuidado na escolha das armações e lentes",
+    text: "Confiança para escolher armações e lentes",
   },
 ];
 
@@ -23,13 +23,12 @@ export function ProcessSection() {
         <AnimatedReveal className="section-heading compact">
           <p className="eyebrow">Reconhecimento local</p>
           <h2 id="experience-title">
-            Reconhecimento que reforça a confiança de quem escolhe a Ótica da
-            Família.
+            Reconhecimento local, avaliações reais e atendimento que geram
+            confiança.
           </h2>
           <p>
-            Além das avaliações no Google, a loja carrega registros de
-            reconhecimento e uma presença local construída com atendimento
-            próximo em Araguaína.
+            A Ótica da Família une presença em Araguaína, nota máxima no Google
+            e cuidado na escolha de cada armação para deixar a visita mais segura.
           </p>
         </AnimatedReveal>
 
@@ -45,7 +44,7 @@ export function ProcessSection() {
           </div>
           <div className="olhar-experience-video-caption">
             <Award size={17} aria-hidden="true" />
-            <span>Registro de premiação e reconhecimento local.</span>
+            <span>Registro de premiação que reforça a confiança local.</span>
           </div>
         </AnimatedReveal>
 

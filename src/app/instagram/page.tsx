@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import Image from 'next/image';
 import { ChevronRight, Glasses, Globe2, Instagram, MapPin, Star } from 'lucide-react';
 
@@ -31,7 +31,7 @@ const links = [
   },
   {
     title: 'Conhecer armações',
-    text: 'Veja modelos e coleções',
+    text: 'Ver vitrine no site',
     href: '/#vitrine',
     icon: Glasses,
     variant: 'ghost',
@@ -45,37 +45,39 @@ const links = [
   },
 ] as const;
 
-const gallery = [
-  {
-    src: '/assets/otica-da-familia/espaco/ambiente.png',
-    alt: 'Ambiente interno da Ótica da Família',
-    wide: true,
-  },
-  {
-    src: '/assets/otica-da-familia/espaco/fachada.png',
-    alt: 'Fachada da Ótica da Família',
-    wide: false,
-  },
-  {
-    src: '/assets/otica-da-familia/colecoes/colecao-01.webp',
-    alt: 'Armações em destaque',
-    wide: false,
-  },
-  {
-    src: '/assets/otica-da-familia/colecoes/colecao-03.jpg',
-    alt: 'Óculos solar em destaque',
-    wide: true,
-  },
-  {
-    src: '/assets/otica-da-familia/colecoes/colecao-06.webp',
-    alt: 'Detalhe de armação',
-    wide: false,
-  },
-  {
-    src: '/assets/otica-da-familia/colecoes/colecao-10.webp',
-    alt: 'Armações de grau em destaque',
-    wide: false,
-  },
+const galleryRows = [
+  [
+    {
+      src: '/assets/otica-da-familia/espaco/ambiente.png',
+      alt: 'Ambiente interno da Ótica da Família',
+    },
+    {
+      src: '/assets/otica-da-familia/espaco/atendimento-01.webp',
+      alt: 'Atendimento na Ótica da Família',
+    },
+    {
+      src: '/assets/otica-da-familia/espaco/fachada.png',
+      alt: 'Fachada da Ótica da Família',
+    },
+  ],
+  [
+    {
+      src: '/assets/otica-da-familia/colecoes/colecao-01.webp',
+      alt: 'Armações em destaque',
+    },
+    {
+      src: '/assets/otica-da-familia/colecoes/colecao-03.jpg',
+      alt: 'Óculos solar em destaque',
+    },
+    {
+      src: '/assets/otica-da-familia/colecoes/colecao-06.webp',
+      alt: 'Detalhe de armação',
+    },
+    {
+      src: '/assets/otica-da-familia/colecoes/colecao-10.webp',
+      alt: 'Armações de grau em destaque',
+    },
+  ],
 ] as const;
 
 const videos = [
@@ -83,19 +85,22 @@ const videos = [
     src: '/assets/otica-da-familia/videos/interno/interno-03.mp4',
     poster: '/assets/otica-da-familia/espaco/atendimento-02.webp',
     title: 'Por dentro da loja',
-    caption: 'Conheça o ambiente da Ótica da Família.',
+    caption: 'Um passeio rápido pelo ambiente da Ótica da Família.',
+    featured: true,
   },
   {
     src: '/assets/otica-da-familia/videos/colecoes/colecao-06.mp4',
     poster: '/assets/otica-da-familia/colecoes/colecao-06.webp',
     title: 'Armações em destaque',
-    caption: 'Modelos e detalhes para encontrar seu estilo.',
+    caption: 'Detalhes de modelo e acabamento.',
+    featured: false,
   },
   {
     src: '/assets/otica-da-familia/videos/interno/interno-01.mp4',
     poster: '/assets/otica-da-familia/espaco/atendimento-01.webp',
     title: 'Atendimento e detalhes',
-    caption: 'Um olhar próximo para cada escolha.',
+    caption: 'Escolha acompanhada com atenção aos detalhes.',
+    featured: false,
   },
 ] as const;
 
@@ -132,13 +137,8 @@ export default function InstagramPage() {
               Óculos, lentes e armações para ver o mundo com bons olhos.
             </h1>
             <p className={styles.bio}>
-              Atendimento cuidadoso em Araguaína, com modelos para rotina, estilo e conforto visual.
+              Links rápidos da Ótica da Família em Araguaína: rota, Instagram, vitrine e site completo.
             </p>
-            <div className={styles.servicePills} aria-label='Serviços principais'>
-              <span>Armações</span>
-              <span>Lentes</span>
-              <span>Óculos solar</span>
-            </div>
           </div>
         </section>
 
@@ -165,23 +165,7 @@ export default function InstagramPage() {
           })}
         </nav>
 
-        <section className={`${styles.section} ${styles.sectionPanel}`} aria-labelledby='vitrine-title'>
-          <div className={styles.sectionHeading}>
-            <h2 id='vitrine-title'>Mini vitrine</h2>
-            <p>Uma seleção curta de ambiente, fachada e armações em destaque.</p>
-          </div>
-
-          <div className={styles.gallery}>
-            {gallery.map((image) => (
-              <div
-                className={`${styles.galleryItem} ${image.wide ? styles.galleryItemWide : ''}`}
-                key={image.src}
-              >
-                <Image src={image.src} alt={image.alt} fill sizes='(min-width: 640px) 180px, 33vw' />
-              </div>
-            ))}
-          </div>
-        </section>
+        <GalleryMarquee />
 
         <section className={`${styles.section} ${styles.sectionPanel}`} aria-labelledby='depoimentos-title'>
           <div className={styles.sectionHeading}>
@@ -236,5 +220,33 @@ export default function InstagramPage() {
         Como chegar
       </a>
     </main>
+  );
+}
+
+function GalleryMarquee() {
+  return (
+    <section className={styles.galleryMarquee} aria-label='Galeria oficial da Ótica da Família'>
+      {galleryRows.map((row, rowIndex) => (
+        <div className={styles.galleryRow} data-direction={rowIndex === 0 ? 'forward' : 'reverse'} key={rowIndex}>
+          <div className={styles.galleryTrack}>
+            {Array.from({ length: 2 }).map((_, setIndex) => (
+              <div className={styles.gallerySet} aria-hidden={setIndex > 0} key={setIndex}>
+                {row.map((image, imageIndex) => (
+                  <figure className={styles.galleryCard} key={`${image.src}-${setIndex}`}>
+                    <Image
+                      src={image.src}
+                      alt={setIndex === 0 ? image.alt : ''}
+                      fill
+                      sizes={rowIndex === 0 ? '(max-width: 640px) 58vw, 240px' : '(max-width: 640px) 42vw, 180px'}
+                      priority={rowIndex === 0 && setIndex === 0 && imageIndex < 2}
+                    />
+                  </figure>
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </section>
   );
 }
