@@ -1,293 +1,240 @@
-import type { Metadata } from "next";
-import Image from "next/image";
-import {
-  ChevronRight,
-  Glasses,
-  Globe2,
-  Instagram,
-  MapPin,
-  Star,
-} from "lucide-react";
-import { TestimonialsMobileMarquee } from "@/components/ui/testimonials-columns-1";
-import { testimonials } from "@/data/testimonials";
-import { site } from "@/lib/site";
+import type { Metadata } from 'next';
+import Image from 'next/image';
+import { ChevronRight, Glasses, Globe2, Instagram, MapPin, Star } from 'lucide-react';
+
+import { InstagramVideos } from '@/components/InstagramVideos';
+import { testimonials } from '@/data/testimonials';
+import { site } from '@/lib/site';
+
+import styles from './instagram.module.css';
+
+export const metadata: Metadata = {
+  title: 'Instagram | Ótica da Família',
+  description:
+    'Links rápidos da Ótica da Família em Araguaína: localização, Instagram, armações e site completo.',
+};
 
 const links = [
   {
-    label: "Como chegar",
+    title: 'Como chegar',
+    text: 'Abrir rota no Google Maps',
     href: site.mapsRouteUrl,
-    ariaLabel: "Abrir localização oficial da Ótica da Família",
     icon: MapPin,
-    variant: "primary",
+    variant: 'primary',
   },
   {
-    label: "Ver no Instagram",
+    title: 'Ver no Instagram',
+    text: site.instagram,
     href: site.instagramUrl,
-    ariaLabel: "Abrir Instagram da Ótica da Família",
     icon: Instagram,
-    variant: "light",
+    variant: 'ghost',
   },
   {
-    label: "Conhecer armações",
-    href: site.instagramUrl,
-    ariaLabel: "Conhecer armações no Instagram",
+    title: 'Conhecer armações',
+    text: 'Veja modelos e coleções',
+    href: '/#vitrine',
     icon: Glasses,
-    variant: "light",
+    variant: 'ghost',
   },
   {
-    label: "Ver avaliações",
-    href: "/#avaliacoes",
-    ariaLabel: "Ver avaliações no site",
-    icon: Star,
-    variant: "ghost",
-  },
-  {
-    label: "Site completo",
-    href: "/",
-    ariaLabel: "Acessar site completo da Ótica da Família",
+    title: 'Site completo',
+    text: 'Abrir página principal',
+    href: '/',
     icon: Globe2,
-    variant: "ghost",
-  },
-] as const;
-const galleryMain = [
-  {
-    src: "/assets/otica-da-familia/espaco/ambiente.png",
-    alt: "Ambiente interno da Ótica da Família",
-  },
-  {
-    src: "/assets/otica-da-familia/espaco/atendimento-01.webp",
-    alt: "Atendimento na Ótica da Família",
-  },
-  {
-    src: "/assets/otica-da-familia/espaco/atendimento-02.webp",
-    alt: "Atendimento personalizado na Ótica da Família",
-  },
-  {
-    src: "/assets/otica-da-familia/espaco/fachada.png",
-    alt: "Fachada da Ótica da Família",
+    variant: 'ghost',
   },
 ] as const;
 
-const gallerySmall = [
+const gallery = [
   {
-    src: "/assets/otica-da-familia/colecoes/colecao-01.webp",
-    alt: "Armação quadrada fosca",
+    src: '/assets/otica-da-familia/espaco/ambiente.png',
+    alt: 'Ambiente interno da Ótica da Família',
+    wide: true,
   },
   {
-    src: "/assets/otica-da-familia/colecoes/colecao-03.jpg",
-    alt: "Óculos solar em destaque",
+    src: '/assets/otica-da-familia/espaco/fachada.png',
+    alt: 'Fachada da Ótica da Família',
+    wide: false,
   },
   {
-    src: "/assets/otica-da-familia/colecoes/colecao-06.webp",
-    alt: "Detalhe de armação de grau",
+    src: '/assets/otica-da-familia/colecoes/colecao-01.webp',
+    alt: 'Armações em destaque',
+    wide: false,
+  },
+  {
+    src: '/assets/otica-da-familia/colecoes/colecao-03.jpg',
+    alt: 'Óculos solar em destaque',
+    wide: true,
+  },
+  {
+    src: '/assets/otica-da-familia/colecoes/colecao-06.webp',
+    alt: 'Detalhe de armação',
+    wide: false,
+  },
+  {
+    src: '/assets/otica-da-familia/colecoes/colecao-10.webp',
+    alt: 'Armações de grau em destaque',
+    wide: false,
   },
 ] as const;
 
-export const metadata: Metadata = {
-  title: "Ótica da Família | Links",
-  description:
-    "Armações, lentes, óculos solar, Instagram e localização oficial da Ótica da Família em Araguaína.",
-  alternates: {
-    canonical: "/instagram",
+const videos = [
+  {
+    src: '/assets/otica-da-familia/videos/interno/interno-03.mp4',
+    poster: '/assets/otica-da-familia/espaco/atendimento-02.webp',
+    title: 'Por dentro da loja',
+    caption: 'Conheça o ambiente da Ótica da Família.',
   },
-  openGraph: {
-    title: "Ótica da Família | Links",
-    description:
-      "Conheça a Ótica da Família em Araguaína, veja as opções no Instagram e abra a localização oficial.",
-    type: "website",
-    images: [
-      {
-        url: site.logoIcon,
-        width: 1254,
-        height: 1254,
-        alt: "Ótica da Família",
-      },
-    ],
+  {
+    src: '/assets/otica-da-familia/videos/colecoes/colecao-06.mp4',
+    poster: '/assets/otica-da-familia/colecoes/colecao-06.webp',
+    title: 'Armações em destaque',
+    caption: 'Modelos e detalhes para encontrar seu estilo.',
   },
-};
+  {
+    src: '/assets/otica-da-familia/videos/interno/interno-01.mp4',
+    poster: '/assets/otica-da-familia/espaco/atendimento-01.webp',
+    title: 'Atendimento e detalhes',
+    caption: 'Um olhar próximo para cada escolha.',
+  },
+] as const;
 
-export default function InstagramBioPage() {
+export default function InstagramPage() {
+  const reviews = testimonials.slice(0, 6);
+
   return (
-    <main className="instagram-page olhar-bio-page">
-      <section className="instagram-hero" aria-labelledby="instagram-title">
-        <div className="instagram-brand-header">
-          <div className="instagram-shell instagram-brand-lockup">
-            <Image
-              src={site.logoIcon}
-              alt="Logo da Ótica da Família"
-              width={116}
-              height={116}
-              priority
-              className="instagram-logo"
-            />
-            <div>
-              <h1 id="instagram-title">{site.shortName}</h1>
-              <p>Araguaína - TO</p>
+    <main className={styles.page}>
+      <div className={`${styles.shell} ${styles.narrow}`}>
+        <section className={styles.hero} aria-labelledby='instagram-title'>
+          <div className={styles.brandBar}>
+            <div className={styles.brandLockup}>
+              <Image
+                className={styles.logo}
+                src={site.logoIcon}
+                alt='Logo da Ótica da Família'
+                width={72}
+                height={72}
+                priority
+              />
+              <div>
+                <p className={styles.brandName}>Ótica da Família</p>
+                <p className={styles.handle}>{site.instagram}</p>
+              </div>
+            </div>
+            <div className={styles.proof} aria-label='Cinco de cinco no Google, dezesseis avaliações'>
+              <Star aria-hidden='true' />
+              <span>5/5 no Google · 16 avaliações</span>
             </div>
           </div>
-        </div>
 
-        <div className="instagram-shell instagram-hero-body">
-          <p className="instagram-intro">
-            Armações, lentes e óculos solar.
-            <br />
-            Venha e veja o mundo com bons olhos.
-            <br />
-            Óculos incríveis para você, em Araguaína - TO.
-            <br />
-            Clique e fale conosco pelo Instagram.
-          </p>
+          <div className={styles.intro}>
+            <h1 id='instagram-title' className={styles.tagline}>
+              Óculos, lentes e armações para ver o mundo com bons olhos.
+            </h1>
+            <p className={styles.bio}>
+              Atendimento cuidadoso em Araguaína, com modelos para rotina, estilo e conforto visual.
+            </p>
+            <div className={styles.servicePills} aria-label='Serviços principais'>
+              <span>Armações</span>
+              <span>Lentes</span>
+              <span>Óculos solar</span>
+            </div>
+          </div>
+        </section>
 
-          <div className="instagram-rating-card olhar-bio-proof">
-            <strong>{site.socialProofText}</strong>
+        <nav className={styles.links} aria-label='Links principais da Ótica da Família'>
+          {links.map((link) => {
+            const Icon = link.icon;
+
+            return (
+              <a
+                className={`${styles.mainLink} ${link.variant === 'primary' ? styles.primary : styles.ghost}`}
+                href={link.href}
+                key={link.title}
+              >
+                <span className={styles.linkIcon} aria-hidden='true'>
+                  <Icon size={19} strokeWidth={2.2} />
+                </span>
+                <span>
+                  <span className={styles.linkTitle}>{link.title}</span>
+                  <span className={styles.linkText}>{link.text}</span>
+                </span>
+                <ChevronRight aria-hidden='true' size={18} />
+              </a>
+            );
+          })}
+        </nav>
+
+        <section className={`${styles.section} ${styles.sectionPanel}`} aria-labelledby='vitrine-title'>
+          <div className={styles.sectionHeading}>
+            <h2 id='vitrine-title'>Mini vitrine</h2>
+            <p>Uma seleção curta de ambiente, fachada e armações em destaque.</p>
           </div>
 
-          <InstagramGalleryMarquee />
-        </div>
-      </section>
+          <div className={styles.gallery}>
+            {gallery.map((image) => (
+              <div
+                className={`${styles.galleryItem} ${image.wide ? styles.galleryItemWide : ''}`}
+                key={image.src}
+              >
+                <Image src={image.src} alt={image.alt} fill sizes='(min-width: 640px) 180px, 33vw' />
+              </div>
+            ))}
+          </div>
+        </section>
 
-      <section
-        className="instagram-links instagram-shell"
-        aria-label="Links principais"
-      >
-        {links.map((link) => {
-          const Icon = link.icon;
+        <section className={`${styles.section} ${styles.sectionPanel}`} aria-labelledby='depoimentos-title'>
+          <div className={styles.sectionHeading}>
+            <h2 id='depoimentos-title'>Depoimentos</h2>
+            <p>★★★★★ 5/5 no Google · 16 avaliações</p>
+          </div>
 
-          return (
-            <a
-              key={link.label}
-              href={link.href}
-              className={`instagram-main-link is-${link.variant}`}
-              aria-label={link.ariaLabel}
-            >
-              <span className="instagram-main-link-icon">
-                <Icon size={20} aria-hidden="true" />
-              </span>
-              <span>{link.label}</span>
-              <ChevronRight size={18} aria-hidden="true" />
-            </a>
-          );
-        })}
-      </section>
+          <div className={styles.testimonialGrid}>
+            {reviews.map((review) => (
+              <article className={styles.testimonialCard} key={review.name}>
+                <div className={styles.testimonialStars} aria-label='Cinco estrelas'>
+                  ★★★★★
+                </div>
+                <blockquote>{review.text}</blockquote>
+                <cite>{review.name} · Google</cite>
+              </article>
+            ))}
+          </div>
+        </section>
 
-      <section
-        className="instagram-testimonials instagram-shell"
-        aria-labelledby="instagram-testimonials-title"
-      >
-        <div className="instagram-section-heading">
-          <h2 id="instagram-testimonials-title">Quem compra, recomenda</h2>
-        </div>
-        <TestimonialsMobileMarquee testimonials={testimonials} />
-      </section>
+        <section className={`${styles.section} ${styles.sectionPanel}`} aria-labelledby='localizacao-title'>
+          <div className={styles.sectionHeading}>
+            <h2 id='localizacao-title'>Localização</h2>
+            <p>Trace a rota oficial para chegar até a Ótica da Família.</p>
+          </div>
 
-      <section
-        id="enderecos"
-        className="instagram-contact instagram-shell"
-        aria-labelledby="contact-title"
-      >
-        <div className="instagram-section-heading">
-          <h2 id="contact-title">Localização</h2>
-        </div>
+          <div className={styles.locationList}>
+            {site.locations.map((location) => (
+              <a className={styles.locationCard} href={location.mapUrl} key={location.id}>
+                <span className={styles.linkIcon} aria-hidden='true'>
+                  <MapPin size={19} strokeWidth={2.2} />
+                </span>
+                <span>
+                  <strong>{location.name}</strong>
+                  <span>{location.address}</span>
+                </span>
+                <ChevronRight aria-hidden='true' size={18} />
+              </a>
+            ))}
+          </div>
+        </section>
 
-        <address className="instagram-contact-list">
-          {site.locations.map((location) => (
-            <a
-              href={location.mapUrl}
-              key={location.id}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`Abrir rota para ${location.name}`}
-            >
-              <MapPin size={18} aria-hidden="true" />
-              <span>
-                <strong>{location.name}</strong>
-                <br />
-                {location.address}
-                <br />
-              </span>
-            </a>
-          ))}
-        </address>
-      </section>
+        <InstagramVideos videos={videos} />
 
-      <footer className="instagram-footer instagram-shell">
-        <Star size={15} aria-hidden="true" />
-        <span>{site.shortName} - Araguaína</span>
-      </footer>
+        <p className={styles.footer}>
+          Ótica da Família · Araguaína - TO · Página rápida para a bio do Instagram.
+        </p>
+      </div>
 
-      <a
-        href={links[0].href}
-        className="instagram-fixed-cta"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Como chegar à Ótica da Família"
-      >
-        <MapPin size={19} aria-hidden="true" />
-        <span>Como chegar</span>
+      <a className={styles.fixedCta} href={site.mapsRouteUrl}>
+        <MapPin aria-hidden='true' size={18} />
+        Como chegar
       </a>
     </main>
-  );
-}
-
-function InstagramGalleryMarquee() {
-  return (
-    <div className="instagram-photo-marquee" aria-label="Galeria de armações">
-      <div className="instagram-photo-row is-main">
-        <div className="instagram-photo-track">
-          {Array.from({ length: 2 }).map((_, setIndex) => (
-            <div
-              className="instagram-photo-set"
-              key={`main-gallery-set-${setIndex}`}
-              aria-hidden={setIndex > 0}
-            >
-              {galleryMain.map((item, index) => (
-                <div
-                  className="instagram-photo-tile"
-                  key={`${item.src}-${setIndex}`}
-                >
-                  <Image
-                    src={item.src}
-                    alt={setIndex === 0 ? item.alt : ""}
-                    fill
-                    sizes="(max-width: 720px) 54vw, 220px"
-                    priority={setIndex === 0 && index < 2}
-                    loading={setIndex === 0 && index < 2 ? undefined : "lazy"}
-                  />
-                </div>
-              ))}
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className="instagram-photo-row is-small">
-        <div className="instagram-photo-track">
-          {Array.from({ length: 2 }).map((_, setIndex) => (
-            <div
-              className="instagram-photo-set"
-              key={`small-gallery-set-${setIndex}`}
-              aria-hidden={setIndex > 0}
-            >
-              {gallerySmall.map((item) => (
-                <div
-                  className={`instagram-photo-tile${
-                    "contain" in item && item.contain ? " is-contain" : ""
-                  }`}
-                  key={`${item.src}-${setIndex}`}
-                >
-                  <Image
-                    src={item.src}
-                    alt={setIndex === 0 ? item.alt : ""}
-                    fill
-                    sizes="(max-width: 720px) 30vw, 132px"
-                    loading="lazy"
-                  />
-                </div>
-              ))}
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
   );
 }

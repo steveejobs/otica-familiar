@@ -1,3 +1,4 @@
+import { BeforeVisitSection } from "@/components/BeforeVisitSection";
 import { FAQSection } from "@/components/FAQSection";
 import { FinalCTA } from "@/components/FinalCTA";
 import { FloatingInstagram } from "@/components/FloatingInstagram";
@@ -8,6 +9,7 @@ import { Header } from "@/components/Header";
 import { HeroProofBar } from "@/components/HeroProofBar";
 import { LensHero } from "@/components/LensHero";
 import { ProcessSection } from "@/components/ProcessSection";
+import { ProductOfferingsSection } from "@/components/ProductOfferingsSection";
 import { RoutineLensSection } from "@/components/RoutineLensSection";
 import { StorePhotosSection } from "@/components/StorePhotosSection";
 
@@ -19,9 +21,11 @@ export default function Home() {
         <LensHero />
         <HeroProofBar />
         <RoutineLensSection />
+        <ProductOfferingsSection />
         <ProcessSection />
         <StorePhotosSection />
         <GoogleReviewsSection />
+        <BeforeVisitSection />
         <FocusGallery />
         <FAQSection />
         <FinalCTA />

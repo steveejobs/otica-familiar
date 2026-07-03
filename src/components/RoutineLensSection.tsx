@@ -14,27 +14,27 @@ const choices = [
   {
     icon: CarFront,
     title: "Para dirigir à noite",
-    text: "Opções para buscar mais conforto diante de faróis, reflexos e cansaço visual.",
+    text: "Mais conforto diante de faróis, reflexos e cansaço visual.",
   },
   {
     icon: MonitorSmartphone,
-    title: "Para trabalhar no computador",
-    text: "Lentes e armações para quem passa muitas horas diante de telas.",
+    title: "Para trabalhar em telas",
+    text: "Opções para uma rotina longa entre computador e celular.",
   },
   {
     icon: Sparkles,
-    title: "Para renovar o estilo",
-    text: "Armações que combinam com seu rosto, sua rotina e sua personalidade.",
+    title: "Para renovar o visual",
+    text: "Armações que acompanham seu rosto, estilo e personalidade.",
   },
   {
     icon: Sun,
-    title: "Para aproveitar o sol",
-    text: "Óculos solar com conforto e estilo para acompanhar o seu dia.",
+    title: "Para usar no sol",
+    text: "Óculos solar para combinar proteção, conforto e presença.",
   },
   {
     icon: Glasses,
-    title: "Para escolher seu primeiro óculos",
-    text: "Atendimento cuidadoso para comparar opções com calma e confiança.",
+    title: "Para o primeiro óculos",
+    text: "Orientação próxima para comparar e escolher com segurança.",
   },
 ];
 
@@ -49,11 +49,11 @@ export function RoutineLensSection() {
         <AnimatedReveal className="section-heading compact">
           <p className="eyebrow">Escolha seus óculos</p>
           <h2 id="routine-lens-title">
-            Encontre uma opção que faça sentido para você.
+            Comece pela necessidade que faz parte do seu dia.
           </h2>
           <p>
-            Cada pessoa tem uma rotina e um estilo. Na Ótica da Família, você
-            compara armações, lentes e óculos solar com atendimento próximo.
+            Compare armações, lentes e óculos solar com atendimento próximo e
+            uma escolha mais objetiva.
           </p>
         </AnimatedReveal>
 
@@ -65,9 +65,9 @@ export function RoutineLensSection() {
               <AnimatedReveal
                 className="olhar-choice-card"
                 key={choice.title}
-                delay={index * 0.04}
+                delay={index * 0.035}
               >
-                <Icon size={22} aria-hidden="true" />
+                <Icon size={21} aria-hidden="true" />
                 <h3>{choice.title}</h3>
                 <p>{choice.text}</p>
                 <a
@@ -76,7 +76,7 @@ export function RoutineLensSection() {
                   rel="noopener noreferrer"
                   aria-label={`${choice.title}: ver opções no Instagram`}
                 >
-                  Ver opções no Instagram
+                  Ver opções
                 </a>
               </AnimatedReveal>
             );

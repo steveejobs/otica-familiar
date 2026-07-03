@@ -1,20 +1,15 @@
 import Image from "next/image";
-import {
-  BadgeCheck,
-  Glasses,
-  HeartHandshake,
-  MessageSquareText,
-  Store,
-} from "lucide-react";
+import { Award, Glasses, HeartHandshake } from "lucide-react";
 import { AnimatedReveal } from "@/components/AnimatedReveal";
 import "@/app/media-phase-four-additions.css";
 
-const experienceItems = [
-  { icon: BadgeCheck, text: "Atendimento elogiado por clientes" },
-  { icon: Store, text: "Ambiente agradável para escolher com calma" },
-  { icon: Glasses, text: "Armações, lentes e óculos solar" },
-  { icon: MessageSquareText, text: "Orientação clara durante a escolha" },
-  { icon: HeartHandshake, text: "Atendimento próximo e cuidadoso" },
+const recognitionItems = [
+  { icon: Award, text: "Atendimento reconhecido" },
+  { icon: HeartHandshake, text: "Confiança de clientes locais" },
+  {
+    icon: Glasses,
+    text: "Cuidado na escolha das armações e lentes",
+  },
 ];
 
 export function ProcessSection() {
@@ -26,11 +21,15 @@ export function ProcessSection() {
     >
       <div className="site-shell olhar-experience-layout">
         <AnimatedReveal className="section-heading compact">
-          <p className="eyebrow">Atendimento Ótica da Família</p>
-          <h2 id="experience-title">Escolher bem começa com atenção.</h2>
+          <p className="eyebrow">Reconhecimento local</p>
+          <h2 id="experience-title">
+            Reconhecimento que reforça a confiança de quem escolhe a Ótica da
+            Família.
+          </h2>
           <p>
-            Você encontra opções para diferentes estilos e uma equipe pronta
-            para ajudar na escolha dos seus próximos óculos.
+            Além das avaliações no Google, a loja carrega registros de
+            reconhecimento e uma presença local construída com atendimento
+            próximo em Araguaína.
           </p>
         </AnimatedReveal>
 
@@ -45,12 +44,13 @@ export function ProcessSection() {
             />
           </div>
           <div className="olhar-experience-video-caption">
-            <span>Atendimento, opções e cuidado em cada escolha.</span>
+            <Award size={17} aria-hidden="true" />
+            <span>Registro de premiação e reconhecimento local.</span>
           </div>
         </AnimatedReveal>
 
-        <div className="olhar-experience-list">
-          {experienceItems.map((item, index) => {
+        <div className="olhar-experience-list recognition-proof-grid">
+          {recognitionItems.map((item, index) => {
             const Icon = item.icon;
 
             return (

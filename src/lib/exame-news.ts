@@ -97,7 +97,7 @@ export async function getExameNews(
     const response = await fetch(EXAME_NEWS_URL, {
       headers: {
         Accept: "text/html,application/xhtml+xml",
-        "User-Agent": "Oticas Olhar editorial preview",
+        "User-Agent": "Otica da Familia editorial preview",
       },
       next: { revalidate: EXAME_NEWS_REVALIDATE },
     });

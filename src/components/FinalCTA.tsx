@@ -14,16 +14,18 @@ export function FinalCTA() {
         <div>
           <Image
             src={site.logoIcon}
-            width={92}
-            height={92}
+            width={84}
+            height={84}
             alt=""
             aria-hidden="true"
           />
           <p className="eyebrow">Ótica da Família</p>
-          <h2 id="final-title">Encontre seus próximos óculos em Araguaína.</h2>
+          <h2 id="final-title">
+            Escolha seus próximos óculos com atendimento próximo em Araguaína.
+          </h2>
           <p>
-            Conheça as opções da loja no Instagram ou abra a localização oficial
-            para planejar sua visita.
+            Veja modelos no Instagram ou abra a localização oficial para
+            visitar a Ótica da Família.
           </p>
           <GoogleRatingBadge
             variant="inline"
@@ -40,7 +42,7 @@ export function FinalCTA() {
             rel="noopener noreferrer"
           >
             <Instagram size={18} aria-hidden="true" />
-            Ver no Instagram
+            Ver modelos no Instagram
           </a>
           <a
             href={site.mapsRouteUrl}

@@ -24,6 +24,7 @@ pnpm-debug.log*
 # Local tooling and temporary output
 .tmp/
 .agent/
+codex-windows-sandbox-setup.exe
 
 # OS/editor files
 .DS_Store

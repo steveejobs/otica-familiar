@@ -1,56 +1,102 @@
 import Image from "next/image";
 import { Instagram } from "lucide-react";
 import { AnimatedReveal } from "@/components/AnimatedReveal";
+import { ViewportVideo } from "@/components/ViewportVideo";
 import { site } from "@/lib/site";
 
-const galleryBlocks = [
+const spaceImages = [
   {
-    id: "espaco",
-    eyebrow: "Atendimento",
-    title: "Escolha guiada, com orientação clara.",
-    text: "Do primeiro teste ao ajuste final, o atendimento ajuda você a decidir com segurança e sem pressa.",
-    images: [
-      {
-        src: "/assets/otica-da-familia/espaco/ambiente.png",
-        alt: "Ambiente interno da Ótica da Família",
-        caption: "Ambiente da loja",
-      },
-      {
-        src: "/assets/otica-da-familia/espaco/atendimento-01.webp",
-        alt: "Atendimento na Ótica da Família",
-        caption: "Atendimento",
-      },
-      {
-        src: "/assets/otica-da-familia/espaco/fachada.png",
-        alt: "Fachada da Ótica da Família",
-        caption: "Fachada",
-      },
-    ],
+    src: "/assets/otica-da-familia/espaco/ambiente.png",
+    alt: "Ambiente interno da Ótica da Família",
+    caption: "Ambiente da loja",
   },
   {
-    id: "colecoes",
-    eyebrow: "Armações",
-    title: "Modelos de grau com presença e conforto.",
-    text: "Uma curadoria para experimentar com calma e encontrar a armação que conversa com seu rosto, sua rotina e seu estilo.",
-    images: [
-      {
-        src: "/assets/otica-da-familia/colecoes/colecao-01.webp",
-        alt: "Seleção de armações da Ótica da Família",
-        caption: "Coleção de armações",
-      },
-      {
-        src: "/assets/otica-da-familia/colecoes/colecao-06.webp",
-        alt: "Armação em destaque na coleção da Ótica da Família",
-        caption: "Detalhes da coleção",
-      },
-      {
-        src: "/assets/otica-da-familia/colecoes/colecao-03.jpg",
-        alt: "Óculos da coleção da Ótica da Família",
-        caption: "Óculos de grau e solares",
-      },
-    ],
+    src: "/assets/otica-da-familia/espaco/atendimento-01.webp",
+    alt: "Atendimento na Ótica da Família",
+    caption: "Atendimento próximo",
   },
-];
+  {
+    src: "/assets/otica-da-familia/espaco/atendimento-02.webp",
+    alt: "Escolha de óculos com atendimento na Ótica da Família",
+    caption: "Escolha acompanhada",
+  },
+  {
+    src: "/assets/otica-da-familia/espaco/fachada.png",
+    alt: "Fachada da Ótica da Família",
+    caption: "Fachada em Araguaína",
+  },
+] as const;
+
+const collectionImages = [
+  {
+    src: "/assets/otica-da-familia/colecoes/colecao-01.webp",
+    alt: "Seleção de armações da Ótica da Família",
+    caption: "Armações de grau",
+  },
+  {
+    src: "/assets/otica-da-familia/colecoes/colecao-02.webp",
+    alt: "Detalhe de armação disponível na Ótica da Família",
+    caption: "Detalhes e acabamento",
+  },
+  {
+    src: "/assets/otica-da-familia/colecoes/colecao-03.jpg",
+    alt: "Óculos da coleção da Ótica da Família",
+    caption: "Modelos para experimentar",
+  },
+  {
+    src: "/assets/otica-da-familia/colecoes/colecao-06.webp",
+    alt: "Armação em destaque na Ótica da Família",
+    caption: "Estilo com presença",
+  },
+  {
+    src: "/assets/otica-da-familia/colecoes/colecao-07.webp",
+    alt: "Modelo de óculos da Ótica da Família",
+    caption: "Opções de coleção",
+  },
+  {
+    src: "/assets/otica-da-familia/colecoes/colecao-08.webp",
+    alt: "Detalhe de óculos da coleção da Ótica da Família",
+    caption: "Curadoria de modelos",
+  },
+] as const;
+
+type GalleryImage = (typeof spaceImages)[number] | (typeof collectionImages)[number];
+
+function EditorialGrid({
+  images,
+  variant,
+}: {
+  images: readonly GalleryImage[];
+  variant: "space" | "collections";
+}) {
+  return (
+    <div className={`official-gallery-grid phase-five-gallery-grid is-${variant}`}>
+      {images.map((image, imageIndex) => (
+        <figure
+          className={`official-gallery-card${
+            imageIndex === 0 ? " is-main" : " is-support"
+          }`}
+          key={image.src}
+        >
+          <div className="official-gallery-image">
+            <Image
+              src={image.src}
+              alt={image.alt}
+              fill
+              sizes={
+                imageIndex === 0
+                  ? "(max-width: 760px) calc(100vw - 40px), 56vw"
+                  : "(max-width: 760px) calc(50vw - 26px), 24vw"
+              }
+              loading="lazy"
+            />
+          </div>
+          <figcaption>{image.caption}</figcaption>
+        </figure>
+      ))}
+    </div>
+  );
+}
 
 export function StorePhotosSection() {
   return (
@@ -61,57 +107,74 @@ export function StorePhotosSection() {
     >
       <div className="site-shell olhar-gallery-shell">
         <AnimatedReveal className="section-heading compact olhar-gallery-intro">
-          <p className="eyebrow">Vitrine</p>
+          <p className="eyebrow">Vitrine oficial</p>
           <h2 id="store-photos-title">
-            Uma sequência visual para escolher com calma.
+            Loja, atendimento e coleções para conhecer antes da visita.
           </h2>
           <p>
-            Armações, solares, atendimento e ambiente aparecem em blocos mais
-            leves, com uma leitura limpa e alinhada à identidade da Óticas
-            Olhar.
+            Veja o ambiente da Ótica da Família e alguns dos estilos que ajudam
+            você a chegar com referências para experimentar.
           </p>
         </AnimatedReveal>
 
         <div className="official-gallery-blocks">
-          {galleryBlocks.map((block, blockIndex) => (
-            <AnimatedReveal
-              className={`official-gallery-block is-${block.id}`}
-              delay={blockIndex * 0.06}
-              key={block.id}
-            >
-              <div className="official-gallery-heading">
-                <p className="eyebrow">{block.eyebrow}</p>
-                <h3>{block.title}</h3>
-                <p>{block.text}</p>
-              </div>
+          <AnimatedReveal className="official-gallery-block is-space">
+            <div className="official-gallery-heading">
+              <p className="eyebrow">Loja e atendimento</p>
+              <h3>Um espaço para escolher com calma.</h3>
+              <p>
+                Ambiente, fachada e atendimento reunidos para você conhecer a
+                experiência antes de chegar.
+              </p>
+            </div>
+            <EditorialGrid images={spaceImages} variant="space" />
+          </AnimatedReveal>
 
-              <div className="official-gallery-grid">
-                {block.images.map((image, imageIndex) => (
-                  <figure
-                    className={`official-gallery-card${
-                      imageIndex === 0 ? " is-main" : " is-support"
-                    }`}
-                    key={image.src}
-                  >
-                    <div className="official-gallery-image">
-                      <Image
-                        src={image.src}
-                        alt={image.alt}
-                        fill
-                        sizes={
-                          imageIndex === 0
-                            ? "(max-width: 760px) calc(100vw - 40px), (max-width: 1100px) 58vw, 690px"
-                            : "(max-width: 390px) 118px, (max-width: 760px) calc(50vw - 26px), (max-width: 1100px) 28vw, 330px"
-                        }
-                        loading="lazy"
-                      />
-                    </div>
-                    <figcaption>{image.caption}</figcaption>
-                  </figure>
-                ))}
-              </div>
-            </AnimatedReveal>
-          ))}
+          <AnimatedReveal
+            className="official-gallery-block is-collections"
+            delay={0.06}
+          >
+            <div className="official-gallery-heading">
+              <p className="eyebrow">Armações e detalhes</p>
+              <h3>Mais referências para encontrar seu estilo.</h3>
+              <p>
+                Formatos, cores e acabamentos para comparar sem preencher a
+                vitrine com repetições.
+              </p>
+            </div>
+            <EditorialGrid images={collectionImages} variant="collections" />
+          </AnimatedReveal>
+
+          <AnimatedReveal
+            className="official-gallery-block official-video-block"
+            delay={0.08}
+          >
+            <div className="official-gallery-heading">
+              <p className="eyebrow">Movimento e detalhe</p>
+              <h3>Veja a coleção em movimento.</h3>
+              <p>
+                Um único vídeo leve destaca proporção, acabamento e presença do
+                modelo sem tornar a página pesada.
+              </p>
+              <a
+                href={site.instagramUrl}
+                className="gallery-inline-link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Instagram size={16} aria-hidden="true" />
+                Ver mais no Instagram
+              </a>
+            </div>
+            <div className="official-video-media">
+              <ViewportVideo
+                src="/assets/otica-da-familia/videos/colecoes/colecao-06.mp4"
+                poster="/assets/otica-da-familia/colecoes/colecao-06.webp"
+                ariaLabel="Vídeo de coleção da Ótica da Família"
+                className="official-gallery-video"
+              />
+            </div>
+          </AnimatedReveal>
         </div>
 
         <AnimatedReveal className="olhar-gallery-cta">
@@ -123,7 +186,7 @@ export function StorePhotosSection() {
             aria-label="Conhecer opções da Ótica da Família no Instagram"
           >
             <Instagram size={17} aria-hidden="true" />
-            Ver no Instagram
+            Ver todas as novidades no Instagram
           </a>
         </AnimatedReveal>
       </div>
