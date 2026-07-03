@@ -1,4 +1,4 @@
-﻿import Image from "next/image";
+import Image from "next/image";
 import { Instagram } from "lucide-react";
 import { AnimatedReveal } from "@/components/AnimatedReveal";
 import { ViewportVideo } from "@/components/ViewportVideo";
@@ -19,11 +19,6 @@ const spaceImages = [
     src: "/assets/otica-da-familia/espaco/atendimento-02.webp",
     alt: "Escolha de óculos com atendimento na Ótica da Família",
     caption: "Escolha acompanhada",
-  },
-  {
-    src: "/assets/otica-da-familia/espaco/fachada.png",
-    alt: "Fachada da Ótica da Família",
-    caption: "Fachada em Araguaína",
   },
 ] as const;
 
@@ -108,22 +103,16 @@ export function StorePhotosSection() {
       <div className="site-shell olhar-gallery-shell">
         <AnimatedReveal className="section-heading compact olhar-gallery-intro">
           <p className="eyebrow">Vitrine oficial</p>
-          <h2 id="store-photos-title">
-            Loja, atendimento e armações em uma vitrine mais objetiva.
-          </h2>
-          <p>
-            Veja o ambiente da Ótica da Família e uma seleção enxuta de modelos para chegar com boas referências.
-          </p>
+          <h2 id="store-photos-title">Conheça a loja e os modelos.</h2>
+          <p>Ambiente, atendimento e armações para chegar com boas referências.</p>
         </AnimatedReveal>
 
         <div className="official-gallery-blocks">
           <AnimatedReveal className="official-gallery-block is-space">
             <div className="official-gallery-heading">
-              <p className="eyebrow">Loja e atendimento</p>
-              <h3>Ambiente principal com apoios visuais.</h3>
-              <p>
-                Uma imagem principal guia a leitura; as imagens de apoio mostram fachada e atendimento sem deixar a seção frouxa.
-              </p>
+              <p className="eyebrow">Por dentro da loja</p>
+              <h3>Veja detalhes do ambiente.</h3>
+              <p>Conheça a loja antes da visita.</p>
             </div>
             <EditorialGrid images={spaceImages} variant="space" />
           </AnimatedReveal>
@@ -134,10 +123,8 @@ export function StorePhotosSection() {
           >
             <div className="official-gallery-heading">
               <p className="eyebrow">Armações e detalhes</p>
-              <h3>Modelos e detalhes para comparar melhor.</h3>
-              <p>
-                Formatos, cores e acabamentos para comparar com variedade e sem excesso visual.
-              </p>
+              <h3>Compare estilos e acabamentos.</h3>
+              <p>Chegue com referências do que quer experimentar.</p>
             </div>
             <EditorialGrid images={collectionImages} variant="collections" />
           </AnimatedReveal>
@@ -147,12 +134,9 @@ export function StorePhotosSection() {
             delay={0.08}
           >
             <div className="official-gallery-heading">
-              <p className="eyebrow">Movimento e detalhe</p>
+              <p className="eyebrow">Atendimento e escolha</p>
               <h3>Veja a coleção em movimento.</h3>
-              <p>
-                Um único vídeo leve destaca proporção, acabamento e presença do
-                modelo sem tornar a página pesada.
-              </p>
+              <p>Detalhes de modelos para comparar antes da visita.</p>
               <a
                 href={site.instagramUrl}
                 className="gallery-inline-link"
@@ -183,11 +167,10 @@ export function StorePhotosSection() {
             aria-label="Conhecer opções da Ótica da Família no Instagram"
           >
             <Instagram size={17} aria-hidden="true" />
-            Ver todas as novidades no Instagram
+            Ver novidades no Instagram
           </a>
         </AnimatedReveal>
       </div>
     </section>
   );
 }
-

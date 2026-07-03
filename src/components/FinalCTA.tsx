@@ -18,14 +18,15 @@ export function FinalCTA() {
             height={84}
             alt=""
             aria-hidden="true"
+            className="final-brand-logo"
           />
           <p className="eyebrow">Ótica da Família</p>
           <h2 id="final-title">
             Escolha seus próximos óculos com atendimento próximo em Araguaína.
           </h2>
           <p>
-            Veja modelos no Instagram ou abra a localização oficial para
-            visitar a Ótica da Família.
+            Veja modelos no Instagram ou abra a localização oficial para visitar a
+            Ótica da Família.
           </p>
           <GoogleRatingBadge
             variant="inline"

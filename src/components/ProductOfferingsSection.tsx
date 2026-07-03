@@ -2,47 +2,42 @@ import {
   Eye,
   Glasses,
   HeartHandshake,
-  Instagram,
   MoveHorizontal,
   Sparkles,
   Sun,
 } from "lucide-react";
 import { AnimatedReveal } from "@/components/AnimatedReveal";
-import { site } from "@/lib/site";
 
 const offerings = [
   {
     icon: Glasses,
     title: "Armações de grau",
-    text: "Modelos para rotina, trabalho, estudo e estilo pessoal.",
-    cta: "Ver armações",
+    text: "Modelos para rotina, trabalho e estilo.",
   },
   {
     icon: Eye,
     title: "Lentes",
-    text: "Orientação para comparar opções de acordo com sua necessidade.",
+    text: "Orientação para comparar opções com clareza.",
   },
   {
     icon: Sun,
     title: "Óculos solar",
-    text: "Proteção, conforto e estilo para acompanhar seus dias.",
-    cta: "Ver modelos",
-  },
-  {
-    icon: HeartHandshake,
-    title: "Atendimento para escolha",
-    text: "Ajuda próxima para decidir com segurança e sem pressa.",
+    text: "Proteção e estilo para o dia a dia.",
   },
   {
     icon: MoveHorizontal,
     title: "Ajuste e conforto",
-    text: "Atenção ao encaixe para uma experiência mais confortável.",
+    text: "Atenção ao encaixe e uso diário.",
+  },
+  {
+    icon: HeartHandshake,
+    title: "Atendimento para escolha",
+    text: "Ajuda próxima para decidir com segurança.",
   },
   {
     icon: Sparkles,
     title: "Diferentes estilos",
-    text: "Opções para um visual discreto, clássico ou marcante.",
-    cta: "Explorar estilos",
+    text: "Opções discretas, clássicas ou marcantes.",
   },
 ] as const;
 
@@ -55,13 +50,8 @@ export function ProductOfferingsSection() {
       <div className="site-shell">
         <AnimatedReveal className="section-heading compact">
           <p className="eyebrow">O que você encontra</p>
-          <h2 id="product-offerings-title">
-            Opções para enxergar bem e escolher com confiança.
-          </h2>
-          <p>
-            Produtos e orientação reunidos para facilitar sua escolha na Ótica
-            da Família.
-          </p>
+          <h2 id="product-offerings-title">Tudo para escolher com confiança.</h2>
+          <p>Armações, lentes e atendimento reunidos em um só lugar.</p>
         </AnimatedReveal>
 
         <div className="product-offerings-grid">
@@ -79,17 +69,6 @@ export function ProductOfferingsSection() {
                   <h3>{offering.title}</h3>
                   <p>{offering.text}</p>
                 </div>
-                {"cta" in offering ? (
-                  <a
-                    href={site.instagramUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`${offering.cta} no Instagram da Ótica da Família`}
-                  >
-                    <Instagram size={15} aria-hidden="true" />
-                    {offering.cta}
-                  </a>
-                ) : null}
               </AnimatedReveal>
             );
           })}

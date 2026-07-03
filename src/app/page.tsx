@@ -1,4 +1,5 @@
 import { BeforeVisitSection } from "@/components/BeforeVisitSection";
+import { FacadeSection } from "@/components/FacadeSection";
 import { FAQSection } from "@/components/FAQSection";
 import { FinalCTA } from "@/components/FinalCTA";
 import { FloatingInstagram } from "@/components/FloatingInstagram";
@@ -22,6 +23,7 @@ export default function Home() {
         <HeroProofBar />
         <RoutineLensSection />
         <ProductOfferingsSection />
+        <FacadeSection />
         <ProcessSection />
         <StorePhotosSection />
         <GoogleReviewsSection />

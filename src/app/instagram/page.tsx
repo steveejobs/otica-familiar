@@ -1,4 +1,4 @@
-﻿import type { Metadata } from 'next';
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import { ChevronRight, Glasses, Globe2, Instagram, MapPin, Star } from 'lucide-react';
 
@@ -52,15 +52,15 @@ const galleryRows = [
       alt: 'Ambiente interno da Ótica da Família',
     },
     {
-      src: '/assets/otica-da-familia/espaco/atendimento-01.webp',
+      src: '/assets/otica-da-familia/espaco/atendimento-02.webp',
       alt: 'Atendimento na Ótica da Família',
     },
+  ],
+  [
     {
       src: '/assets/otica-da-familia/espaco/fachada.png',
       alt: 'Fachada da Ótica da Família',
     },
-  ],
-  [
     {
       src: '/assets/otica-da-familia/colecoes/colecao-01.webp',
       alt: 'Armações em destaque',
@@ -72,10 +72,6 @@ const galleryRows = [
     {
       src: '/assets/otica-da-familia/colecoes/colecao-06.webp',
       alt: 'Detalhe de armação',
-    },
-    {
-      src: '/assets/otica-da-familia/colecoes/colecao-10.webp',
-      alt: 'Armações de grau em destaque',
     },
   ],
 ] as const;
@@ -137,35 +133,40 @@ export default function InstagramPage() {
               Óculos, lentes e armações para ver o mundo com bons olhos.
             </h1>
             <p className={styles.bio}>
-              Links rápidos da Ótica da Família em Araguaína: rota, Instagram, vitrine e site completo.
+              Atendimento cuidadoso em Araguaína, com modelos para rotina, estilo e conforto visual.
             </p>
           </div>
         </section>
 
-        <nav className={styles.links} aria-label='Links principais da Ótica da Família'>
-          {links.map((link) => {
-            const Icon = link.icon;
-
-            return (
-              <a
-                className={`${styles.mainLink} ${link.variant === 'primary' ? styles.primary : styles.ghost}`}
-                href={link.href}
-                key={link.title}
-              >
-                <span className={styles.linkIcon} aria-hidden='true'>
-                  <Icon size={19} strokeWidth={2.2} />
-                </span>
-                <span>
-                  <span className={styles.linkTitle}>{link.title}</span>
-                  <span className={styles.linkText}>{link.text}</span>
-                </span>
-                <ChevronRight aria-hidden='true' size={18} />
-              </a>
-            );
-          })}
-        </nav>
-
         <GalleryMarquee />
+
+        <section className={styles.quickLinksSection} aria-labelledby='links-title'>
+          <h2 id='links-title' className={styles.quickLinksTitle}>
+            Links rápidos da Ótica da Família em Araguaína
+          </h2>
+          <nav className={styles.links} aria-label='Links principais da Ótica da Família'>
+            {links.map((link) => {
+              const Icon = link.icon;
+
+              return (
+                <a
+                  className={`${styles.mainLink} ${link.variant === 'primary' ? styles.primary : styles.ghost}`}
+                  href={link.href}
+                  key={link.title}
+                >
+                  <span className={styles.linkIcon} aria-hidden='true'>
+                    <Icon size={19} strokeWidth={2.2} />
+                  </span>
+                  <span>
+                    <span className={styles.linkTitle}>{link.title}</span>
+                    <span className={styles.linkText}>{link.text}</span>
+                  </span>
+                  <ChevronRight aria-hidden='true' size={18} />
+                </a>
+              );
+            })}
+          </nav>
+        </section>
 
         <section className={`${styles.section} ${styles.sectionPanel}`} aria-labelledby='depoimentos-title'>
           <div className={styles.sectionHeading}>
@@ -225,7 +226,7 @@ export default function InstagramPage() {
 
 function GalleryMarquee() {
   return (
-    <section className={styles.galleryMarquee} aria-label='Galeria oficial da Ótica da Família'>
+    <section className={styles.galleryMarquee} aria-label='Mini vitrine oficial da Ótica da Família'>
       {galleryRows.map((row, rowIndex) => (
         <div className={styles.galleryRow} data-direction={rowIndex === 0 ? 'forward' : 'reverse'} key={rowIndex}>
           <div className={styles.galleryTrack}>
@@ -237,7 +238,7 @@ function GalleryMarquee() {
                       src={image.src}
                       alt={setIndex === 0 ? image.alt : ''}
                       fill
-                      sizes={rowIndex === 0 ? '(max-width: 640px) 58vw, 240px' : '(max-width: 640px) 42vw, 180px'}
+                      sizes={rowIndex === 0 ? '(max-width: 640px) 56vw, 220px' : '(max-width: 640px) 38vw, 160px'}
                       priority={rowIndex === 0 && setIndex === 0 && imageIndex < 2}
                     />
                   </figure>

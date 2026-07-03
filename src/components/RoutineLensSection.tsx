@@ -3,6 +3,7 @@
 import {
   CarFront,
   Glasses,
+  Instagram,
   MonitorSmartphone,
   Sparkles,
   Sun,
@@ -14,27 +15,27 @@ const choices = [
   {
     icon: CarFront,
     title: "Para dirigir à noite",
-    text: "Mais conforto diante de faróis, reflexos e cansaço visual.",
+    text: "Mais conforto com faróis e reflexos.",
   },
   {
     icon: MonitorSmartphone,
     title: "Para trabalhar em telas",
-    text: "Opções para uma rotina longa entre computador e celular.",
+    text: "Opções para computador e celular.",
   },
   {
     icon: Sparkles,
     title: "Para renovar o visual",
-    text: "Armações que acompanham seu rosto, estilo e personalidade.",
+    text: "Armações para atualizar seu estilo.",
   },
   {
     icon: Sun,
     title: "Para usar no sol",
-    text: "Óculos solar para combinar proteção, conforto e presença.",
+    text: "Solar para proteção e presença.",
   },
   {
     icon: Glasses,
     title: "Para o primeiro óculos",
-    text: "Orientação próxima para comparar e escolher com segurança.",
+    text: "Orientação para escolher com segurança.",
   },
 ];
 
@@ -48,12 +49,9 @@ export function RoutineLensSection() {
       <div className="site-shell">
         <AnimatedReveal className="section-heading compact">
           <p className="eyebrow">Escolha seus óculos</p>
-          <h2 id="routine-lens-title">
-            Comece pela necessidade que faz parte do seu dia.
-          </h2>
+          <h2 id="routine-lens-title">Escolha pelo seu momento.</h2>
           <p>
-            Compare armações, lentes e óculos solar com atendimento próximo e
-            uma escolha mais objetiva.
+            Cinco caminhos rápidos para encontrar armações, lentes ou óculos solar.
           </p>
         </AnimatedReveal>
 
@@ -70,18 +68,23 @@ export function RoutineLensSection() {
                 <Icon size={21} aria-hidden="true" />
                 <h3>{choice.title}</h3>
                 <p>{choice.text}</p>
-                <a
-                  href={site.instagramUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`${choice.title}: ver opções no Instagram`}
-                >
-                  Ver opções
-                </a>
               </AnimatedReveal>
             );
           })}
         </div>
+
+        <AnimatedReveal className="choice-section-cta" delay={0.08}>
+          <a
+            href={site.instagramUrl}
+            className="button button-red"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Ver modelos da Ótica da Família no Instagram"
+          >
+            <Instagram size={17} aria-hidden="true" />
+            Ver modelos no Instagram
+          </a>
+        </AnimatedReveal>
       </div>
     </section>
   );
