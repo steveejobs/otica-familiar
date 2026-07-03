@@ -1772,7 +1772,11 @@
 
 .facade-media {
   position: relative;
-  min-height: clamp(320px, 38vw, 500px);
+  display: flex;
+  min-height: 0;
+  aspect-ratio: 1 / 1;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
   border: 1px solid rgba(132, 80, 14, 0.14);
   border-radius: 28px;
@@ -1780,8 +1784,14 @@
   box-shadow: 0 24px 70px rgba(32, 28, 24, 0.1);
 }
 
-.facade-media img {
-  object-fit: cover;
+.facade-media img,
+.facade-image {
+  position: static;
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
   object-position: center;
 }
 
@@ -2001,7 +2011,7 @@
   }
 
   .facade-media {
-    min-height: 300px;
+    min-height: 0;
     border-radius: 22px;
   }
 
@@ -2053,7 +2063,7 @@
   }
 
   .facade-media {
-    min-height: 260px;
+    min-height: 0;
   }
 
   .facade-seal,
@@ -2062,3 +2072,163 @@
   }
 }
 
+
+/* Header brand alignment: keep the complete logo visible at every breakpoint. */
+.site-header .header-inner {
+  height: 68px;
+  padding-block: 0;
+}
+
+.site-header .brand-mark {
+  display: inline-flex;
+  min-width: 0;
+  align-items: center;
+  gap: 12px;
+}
+
+.site-header .brand-logo-tile {
+  display: flex;
+  width: 80px;
+  height: 48px;
+  flex: 0 0 80px;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+  padding: 0;
+}
+
+.site-header .brand-logo-tile img,
+.site-header .brand-mark .brand-logo-tile img {
+  display: block;
+  width: 64px;
+  max-width: none;
+  height: 64px;
+  object-fit: contain;
+  object-position: center;
+  transform: translateY(2px);
+}
+
+.site-header .brand-copy {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+  line-height: 1;
+}
+
+.site-header .brand-copy strong {
+  font-size: 1.25rem;
+  line-height: 1.05;
+  white-space: nowrap;
+}
+
+.site-header .brand-copy small {
+  display: block;
+  font-size: 0.8125rem;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+.site-header .header-actions,
+.site-header .header-social-link,
+.site-header .header-route,
+.site-header .header-cta,
+.site-header .menu-button {
+  align-items: center;
+}
+
+@media (max-width: 1040px) {
+  .site-header .header-inner {
+    height: 63px;
+    gap: 12px;
+  }
+
+  .site-header .brand-mark {
+    max-width: calc(100% - 52px);
+    flex: 0 1 auto;
+    gap: 10px;
+  }
+
+  .site-header .brand-logo-tile {
+    width: 72px;
+    height: 46px;
+    flex-basis: 72px;
+  }
+
+  .site-header .brand-logo-tile img,
+  .site-header .brand-mark .brand-logo-tile img {
+    width: 61px;
+    height: 61px;
+  }
+
+  .site-header .brand-copy strong {
+    font-size: 1.125rem;
+  }
+
+  .site-header .brand-copy small {
+    display: block;
+    font-size: 0.75rem;
+  }
+
+  .site-header .menu-button {
+    width: 44px;
+    height: 44px;
+    flex: 0 0 44px;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 370px) {
+  .site-header .brand-copy small {
+    display: none;
+  }
+}
+
+/* Mobile video sizing: keep vertical media prominent without cropping. */
+@media (max-width: 760px) {
+  .olhar-hero-visual {
+    justify-self: stretch;
+    max-width: none;
+    width: 100%;
+  }
+
+  .olhar-hero-media {
+    aspect-ratio: 4 / 5;
+    border-radius: 12px;
+    min-height: 0;
+    width: 100%;
+  }
+
+  .olhar-hero-media .olhar-hero-video {
+    height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    width: 100%;
+  }
+
+  .official-video-block {
+    gap: 16px;
+    overflow: hidden;
+    padding: 0;
+    width: 100%;
+  }
+
+  .official-video-block .official-gallery-heading {
+    padding: 16px 16px 0;
+  }
+
+  .official-video-media {
+    aspect-ratio: 4 / 5;
+    border-radius: 10px;
+    min-height: 0;
+    width: 100%;
+  }
+
+  .official-gallery-video {
+    height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    width: 100%;
+  }
+}

@@ -117,10 +117,14 @@
 
 .copy p {
   color: var(--muted);
+  display: -webkit-box;
   font-size: 0.86rem;
   line-height: 1.38;
   margin: 0;
+  overflow: hidden;
   overflow-wrap: anywhere;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 .side .video {
@@ -166,16 +170,53 @@
 }
 
 @media (max-width: 719px) {
+  .section {
+    border-radius: 12px;
+    margin-left: calc(50% - 48vw);
+    margin-right: calc(50% - 48vw);
+    padding: 44px 0;
+    width: 96vw;
+  }
+
+  .heading {
+    margin: 0 auto 16px;
+    width: 92vw;
+  }
+
   .editorialGrid {
+    gap: 16px;
     grid-template-columns: 1fr;
   }
 
+  .card {
+    border-radius: 10px;
+  }
+
+  .featured {
+    width: 100%;
+  }
+
+  .side {
+    margin-inline: auto;
+    width: calc(92vw + 2px);
+  }
+
   .featured .video {
-    aspect-ratio: 9 / 15;
+    aspect-ratio: 4 / 5;
   }
 
   .side .video {
     aspect-ratio: 4 / 5;
+  }
+
+  .video {
+    max-width: 100%;
+    object-fit: contain;
+    width: 100%;
+  }
+
+  .copy {
+    padding: 11px 12px 13px;
   }
 }
 

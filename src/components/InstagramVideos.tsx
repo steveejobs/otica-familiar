@@ -20,8 +20,6 @@ export function InstagramVideos({ videos }: InstagramVideosProps) {
   const videoRefs = useRef<Array<HTMLVideoElement | null>>([]);
   const prefersReducedMotion = useRef(false);
   const [playingIndexes, setPlayingIndexes] = useState<Set<number>>(() => new Set());
-  const [visibleIndexes, setVisibleIndexes] = useState<Set<number>>(() => new Set());
-  const [reducedMotion, setReducedMotion] = useState(false);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -29,7 +27,6 @@ export function InstagramVideos({ videos }: InstagramVideosProps) {
     function syncReducedMotion() {
       const shouldReduce = mediaQuery.matches;
       prefersReducedMotion.current = shouldReduce;
-      setReducedMotion(shouldReduce);
 
       if (shouldReduce) {
         videoRefs.current.forEach((video) => video?.pause());
@@ -47,19 +44,6 @@ export function InstagramVideos({ videos }: InstagramVideosProps) {
       (entries) => {
         entries.forEach((entry) => {
           const video = entry.target as HTMLVideoElement;
-          const index = Number(video.dataset.videoIndex);
-
-          setVisibleIndexes((current) => {
-            const next = new Set(current);
-
-            if (entry.isIntersecting) {
-              next.add(index);
-            } else {
-              next.delete(index);
-            }
-
-            return next;
-          });
 
           if (entry.isIntersecting && !prefersReducedMotion.current) {
             void video.play().catch(() => undefined);
@@ -124,7 +108,6 @@ export function InstagramVideos({ videos }: InstagramVideosProps) {
       <div className={styles.editorialGrid}>
         {videos.map((video, index) => {
           const isPlaying = playingIndexes.has(index);
-          const isVisible = visibleIndexes.has(index);
 
           return (
             <article
@@ -137,9 +120,7 @@ export function InstagramVideos({ videos }: InstagramVideosProps) {
                     videoRefs.current[index] = node;
                   }}
                   aria-label={video.title}
-                  autoPlay={isVisible && !reducedMotion}
                   className={styles.video}
-                  data-video-index={index}
                   loop
                   muted
                   playsInline

@@ -158,7 +158,8 @@
 
 @media (max-width: 760px) {
   .olhar-hero-visual {
-    width: min(100%, 390px);
+    max-width: none;
+    width: 100%;
   }
 
   .olhar-hero-media {

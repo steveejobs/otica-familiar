@@ -14,9 +14,11 @@ export function FacadeSection() {
           <Image
             src="/assets/otica-da-familia/espaco/fachada.png"
             alt="Fachada da Ótica da Família em Araguaína"
-            fill
+            width={1254}
+            height={1254}
             sizes="(max-width: 760px) calc(100vw - 32px), 58vw"
             loading="lazy"
+            className="facade-image"
           />
         </AnimatedReveal>
 

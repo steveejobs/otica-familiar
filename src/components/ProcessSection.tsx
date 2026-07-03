@@ -1,4 +1,4 @@
-﻿import Image from "next/image";
+import Image from "next/image";
 import { Award, Glasses, HeartHandshake } from "lucide-react";
 import { AnimatedReveal } from "@/components/AnimatedReveal";
 import "@/app/media-phase-four-additions.css";
@@ -35,7 +35,7 @@ export function ProcessSection() {
         <AnimatedReveal className="olhar-experience-video-card" delay={0.08}>
           <div className="olhar-experience-video-frame olhar-experience-media-frame">
             <Image
-              src="/assets/otica-da-familia/espaco/premiacao.webp"
+              src="/assets/otica-da-familia/espaco/premiacao-atual.webp"
               alt="Registro de premiação da Ótica da Família"
               fill
               sizes="(max-width: 430px) calc(100vw - 56px), 410px"
