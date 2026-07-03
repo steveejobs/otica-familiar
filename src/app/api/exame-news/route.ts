@@ -5,7 +5,7 @@ import {
   getExameNews,
 } from "@/lib/exame-news";
 
-export const revalidate = 900;
+export const dynamic = "force-dynamic";
 
 export async function GET() {
   const items = await getExameNews(EXAME_NEWS_LIMIT);
