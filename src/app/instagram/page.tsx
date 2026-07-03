@@ -51,34 +51,34 @@ const links = [
 ] as const;
 const galleryMain = [
   {
-    src: "/galeria%20cole%C3%A7%C3%A3o/Maximalista%20na%20medida%20certa.%20%F0%9F%98%8E%E2%9C%A8Esse%20modelo%20entrega%20presen%C3%A7a%20de%20longe%20%E2%80%94%20daqueles%20que%20transformam.jpg",
-    alt: "Óculos solar na Ótica da Família",
+    src: "/assets/otica-da-familia/espaco/ambiente.png",
+    alt: "Ambiente interno da Ótica da Família",
   },
   {
-    src: "/galeria%20cole%C3%A7%C3%A3o/Dourada%2C%20elegante%20e%20cheia%20de%20personalidade.%20%F0%9F%98%8E%20A%20arma%C3%A7%C3%A3o%20de%20grau%20Ray-Ban%20%C3%A9%20perfeita%20para%20quem%20qu.jpg",
-    alt: "Armação dourada na Ótica da Família",
+    src: "/assets/otica-da-familia/espaco/atendimento-01.webp",
+    alt: "Atendimento na Ótica da Família",
   },
   {
-    src: "/galeria%20cole%C3%A7%C3%A3o/Arredondar%20o%20olhar%2C%20ampliar%20a%20criatividade%20%E2%9C%A8%F0%9F%95%B6%EF%B8%8FAs%20arma%C3%A7%C3%B5es%20redondas%20em%20acetato%20n%C3%A3o%20s%C3%A3o%20s%C3%B3%20tend%C3%AAn.jpg",
-    alt: "Armação redonda em acetato",
+    src: "/assets/otica-da-familia/espaco/atendimento-02.webp",
+    alt: "Atendimento personalizado na Ótica da Família",
   },
   {
-    src: "/galeria%20cole%C3%A7%C3%A3o/Quebrando%20o%20padr%C3%A3o%20da%20melhor%20forma.O%20modelo%20Cavaleira%20azul%20degrad%C3%AA%20traz%20a%20personalidade%20das%20arma.jpg",
-    alt: "Armação azul degradê",
+    src: "/assets/otica-da-familia/espaco/fachada.png",
+    alt: "Fachada da Ótica da Família",
   },
 ] as const;
 
 const gallerySmall = [
   {
-    src: "/galeria%20cole%C3%A7%C3%A3o/Um%20cl%C3%A1ssico%20que%20nunca%20erra-%20arma%C3%A7%C3%A3o%20quadrada%2C%20fosca%20e%20cheia%20de%20presen%C3%A7a.Discreto%20no%20brilho%2C%20marc.jpg",
+    src: "/assets/otica-da-familia/colecoes/colecao-01.webp",
     alt: "Armação quadrada fosca",
   },
   {
-    src: "/galeria%20cole%C3%A7%C3%A3o/Maximalista%20na%20medida%20certa.%20%F0%9F%98%8E%E2%9C%A8Esse%20modelo%20entrega%20presen%C3%A7a%20de%20longe%20%E2%80%94%20daqueles%20que%20transformam%20(2).jpg",
+    src: "/assets/otica-da-familia/colecoes/colecao-03.jpg",
     alt: "Óculos solar em destaque",
   },
   {
-    src: "/galeria%20cole%C3%A7%C3%A3o/Dourada%2C%20elegante%20e%20cheia%20de%20personalidade.%20%F0%9F%98%8E%20A%20arma%C3%A7%C3%A3o%20de%20grau%20Ray-Ban%20%C3%A9%20perfeita%20para%20quem%20qu%20(1).jpg",
+    src: "/assets/otica-da-familia/colecoes/colecao-06.webp",
     alt: "Detalhe de armação de grau",
   },
 ] as const;

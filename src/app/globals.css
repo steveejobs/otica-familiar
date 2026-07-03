@@ -6954,11 +6954,7 @@ img {
 
 .instagram-video-placeholder {
   display: block;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(20, 20, 18, 0.04)),
-    url("/galeria%20cole%C3%A7%C3%A3o/cole%C3%A7%C3%A3o%204%20(1).jpg") center /
-      cover no-repeat,
-    #eeeae0;
+  background: linear-gradient(135deg, #fff8ef 0%, #fff8ef 76%, #e48100 160%);
 }
 
 .instagram-video-cta {

@@ -64,11 +64,12 @@ export const brandColors = {
 };
 
 export const media = {
-  heroVideo: "/galeria%20cole%C3%A7%C3%A3o/snapinsta.com.br-6a30638d9b709.mp4",
+  heroVideo:
+    "/assets/otica-da-familia/videos/interno/interno-03.mp4",
   experienceVideo:
-    "/galeria%20cole%C3%A7%C3%A3o/snapinsta.com.br-6a306330ad7cc.mp4",
+    "/assets/otica-da-familia/videos/interno/interno-01.mp4",
   heroPoster:
-    "/galeria%20cole%C3%A7%C3%A3o/Um%20cl%C3%A1ssico%20que%20nunca%20erra-%20arma%C3%A7%C3%A3o%20quadrada%2C%20fosca%20e%20cheia%20de%20presen%C3%A7a.Discreto%20no%20brilho%2C%20marc.jpg",
+    "/assets/otica-da-familia/espaco/atendimento-02.webp",
 };
 
 export const site = {

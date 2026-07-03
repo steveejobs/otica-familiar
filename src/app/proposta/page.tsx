@@ -258,18 +258,15 @@ export default function ProposalPage() {
               </span>
             </div>
             <div className="proposal-showcase-main proposal-collage">
-              <video
-                src={media.heroVideo}
-                poster={media.heroPoster}
-                muted
-                loop
-                playsInline
-                autoPlay
-                preload="metadata"
-                aria-label="Vitrine visual da Ótica da Família"
+              <Image
+                src={media.heroPoster}
+                alt="Vitrine visual da Ótica da Família"
+                fill
+                sizes="(max-width: 980px) 88vw, 520px"
+                priority
               />
               <Image
-                src={site.heroImage}
+                src="/assets/otica-da-familia/colecoes/colecao-03.jpg"
                 alt=""
                 width={180}
                 height={180}
@@ -494,8 +491,8 @@ export default function ProposalPage() {
             </div>
             <div className="proposal-recommendation-media">
               <Image
-                src={site.heroImage}
-                alt="Armação em destaque da Ótica da Família"
+                src="/assets/otica-da-familia/espaco/ambiente.png"
+                alt="Ambiente da Ótica da Família"
                 fill
                 sizes="(max-width: 900px) 88vw, 380px"
                 loading="lazy"
