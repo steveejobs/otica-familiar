@@ -32,13 +32,16 @@ export function ProcessSection() {
           </p>
         </AnimatedReveal>
 
-        <AnimatedReveal className="olhar-experience-video-card" delay={0.08}>
-          <div className="olhar-experience-video-frame olhar-experience-media-frame">
+        <AnimatedReveal
+          className="olhar-experience-video-card recognition-media-card"
+          delay={0.08}
+        >
+          <div className="olhar-experience-video-frame olhar-experience-media-frame recognition-media-frame">
             <Image
-              src="/assets/otica-da-familia/espaco/premiacao-atual.webp"
+              src="/assets/otica-da-familia/espaco/reconhecimento-atual.webp"
               alt="Registro de premiação da Ótica da Família"
               fill
-              sizes="(max-width: 430px) calc(100vw - 56px), 410px"
+              sizes="(max-width: 760px) calc(100vw - 40px), 420px"
               loading="lazy"
             />
           </div>

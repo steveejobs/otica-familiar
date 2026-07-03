@@ -79,7 +79,9 @@ function EditorialGrid({
               alt={image.alt}
               fill
               sizes={
-                imageIndex === 0
+                variant === "space"
+                  ? "(max-width: 980px) calc(100vw - 26px), 410px"
+                  : imageIndex === 0
                   ? "(max-width: 760px) calc(100vw - 40px), 56vw"
                   : "(max-width: 760px) calc(50vw - 26px), 24vw"
               }

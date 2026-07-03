@@ -171,52 +171,140 @@
 
 @media (max-width: 719px) {
   .section {
-    border-radius: 12px;
-    margin-left: calc(50% - 48vw);
-    margin-right: calc(50% - 48vw);
-    padding: 44px 0;
-    width: 96vw;
+    border-radius: 18px;
+    box-sizing: border-box;
+    margin-inline: auto;
+    padding: 28px 0;
+    width: calc(100vw - 32px);
   }
 
   .heading {
-    margin: 0 auto 16px;
-    width: 92vw;
+    margin: 0 auto 18px;
+    width: calc(100% - 32px);
   }
 
   .editorialGrid {
-    gap: 16px;
-    grid-template-columns: 1fr;
+    align-items: stretch;
+    gap: clamp(10px, 2.8vw, 12px);
+    grid-template-columns: minmax(0, 1.32fr) minmax(0, 0.68fr);
+    grid-template-rows: repeat(2, minmax(0, auto));
   }
 
   .card {
-    border-radius: 10px;
+    border-radius: 16px;
   }
 
   .featured {
-    width: 100%;
+    align-self: start;
+    aspect-ratio: 9 / 12;
+    display: grid;
+    grid-row: 1 / 3;
+    min-height: 0;
+    position: relative;
   }
 
   .side {
-    margin-inline: auto;
-    width: calc(92vw + 2px);
+    min-width: 0;
+    position: relative;
+  }
+
+  .featured .mediaWrap {
+    inset: 0;
+    position: absolute;
   }
 
   .featured .video {
-    aspect-ratio: 4 / 5;
+    aspect-ratio: auto;
   }
 
-  .side .video {
+  .side .mediaWrap {
     aspect-ratio: 4 / 5;
   }
 
   .video {
+    height: 100%;
     max-width: 100%;
     object-fit: contain;
     width: 100%;
   }
 
   .copy {
-    padding: 11px 12px 13px;
+    background: linear-gradient(180deg, transparent, rgba(18, 15, 12, 0.9));
+    bottom: 0;
+    color: #fff;
+    left: 0;
+    padding: 34px 12px 12px;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+    z-index: 1;
+  }
+
+  .copy h3,
+  .copy p {
+    color: inherit;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+
+  .side .copy {
+    padding: 26px 8px 9px;
+  }
+
+  .side .copy h3 {
+    display: -webkit-box;
+    font-size: clamp(0.7rem, 2.8vw, 0.78rem);
+    line-height: 1.12;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  .side .copy p {
+    display: none;
+  }
+
+  .playButton {
+    height: 42px;
+    width: 42px;
+  }
+
+  .side .playButton {
+    height: 34px;
+    width: 34px;
+  }
+}
+
+@media (max-width: 374px) {
+  .editorialGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: auto auto;
+  }
+
+  .featured {
+    align-self: stretch;
+    aspect-ratio: auto;
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
+
+  .featured .mediaWrap {
+    aspect-ratio: 4 / 5;
+    height: auto;
+    inset: auto;
+    position: relative;
+  }
+
+  .featured .copy {
+    padding: 38px 13px 13px;
+  }
+
+  .side .copy {
+    padding-inline: 9px;
+  }
+
+  .side .copy h3 {
+    font-size: 0.78rem;
   }
 }
 
