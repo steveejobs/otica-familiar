@@ -1,0 +1,8 @@
+.olhar-experience-video-frame.olhar-experience-media-frame {
+  aspect-ratio: 4 / 5;
+  max-height: 520px;
+}
+
+.olhar-experience-media-frame img {
+  object-fit: contain;
+}
